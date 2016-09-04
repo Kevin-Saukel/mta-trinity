@@ -1,0 +1,16 @@
+.form_center input.text  {
+	width: 99%;
+	margin: auto;
+}
+
+.form_center p {
+	font-family: Arial;
+	
+}
+
+.form_submit {
+	width: 100%;
+	margin: auto;
+	margin-left: 0.25%;
+	margin-top: 5px;
+}

@@ -52,10 +52,14 @@ function Mysql:__getTable ( connection, table, condition, ... )
 		_getTable["Callback"] = {}
 		_getTable["Callback"][1], _getTable["Callback"][2], _getTable["Callback"][3] = _getTable["Sql"]:poll(-1)
 		if ( _getTable["Callback"][1] and _getTable["Callback"][2] ) then
-			--Server:__Output()
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (SELECT_TABLE) on "..connection..": Sucessfull!")
 			return _getTable["Callback"][1][1], _getTable["Callback"][2], _getTable["Callback"][3], _getTable["Callback"][1]
 		else
-			--Server:__Output()
+			local uniqueKey = Class:__Get("Lib","EncodingUtility"):__GenerateSalt ( 12 )
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (SELECT_TABLE) on "..connection.." in table "..table.." ("..uniqueKey.."): Failed!")
+			Class:__Get("Lib","Log"):__Write("MySQL","Errorcode ("..uniqueKey.."): "..tostring(_getTable["Callback"][3]))
+			Class:__Get("Lib","Log"):__Write("MySQL","Querystring ("..uniqueKey.."): ".._getTable["Query"])
+			Class:__Get("Lib","Log"):__Write("MySQL","Querydatas ("..uniqueKey.."): "..tostring(Class:__Get("Lib","StringUtility"):__Concat(_getTable["Args"],",")))
 			return _getTable["Callback"][1], 0, _getTable["Callback"][3]
 		end
 	end
@@ -73,10 +77,13 @@ function Mysql:__setTable ( connection, table, condition, ... )
 		end
 		_setTable["Exec"] = Class:__Get("Lib","Mysql"):__getConnection(connection):exec(_setTable["Query"],table,unpack(_setTable["Args"]))
 		if ( _setTable["Exec"] ) then
-			--Server:__Output()
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (SET_TABLE) on "..connection..": Sucessfull!")
 			return true
 		else
-			--Server:__Output()
+			local uniqueKey = Class:__Get("Lib","EncodingUtility"):__GenerateSalt ( 12 )
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (SET_TABLE) on "..connection.." in table "..table.." ("..uniqueKey.."): Failed!")
+			Class:__Get("Lib","Log"):__Write("MySQL","Querystring ("..uniqueKey.."): ".._setTable["Query"])
+			Class:__Get("Lib","Log"):__Write("MySQL","Querydatas ("..uniqueKey.."): "..tostring(Class:__Get("Lib","StringUtility"):__Concat(_setTable["Args"],",")))
 			return false
 		end
 	end
@@ -96,10 +103,14 @@ function Mysql:__Get ( connection, table, field, condition, ... )
 		_Get["Callback"] = {}
 		_Get["Callback"][1], _Get["Callback"][2], _Get["Callback"][3] = _Get["Sql"]:poll(-1)
 		if ( _Get["Callback"][1] and _Get["Callback"][2] >= 1 ) then
-			--Server:__Output()
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (GET) on "..connection..": Sucessfull!")
 			return _Get["Callback"][1][1][field], _Get["Callback"][2], _Get["Callback"][3]
 		else
-			--Server:__Output()
+			local uniqueKey = Class:__Get("Lib","EncodingUtility"):__GenerateSalt ( 12 )
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (GET) on "..connection.." in table "..table.." ("..uniqueKey.."): Failed!")
+			Class:__Get("Lib","Log"):__Write("MySQL","Errorcode ("..uniqueKey.."): "..tostring(_Get["Callback"][3]))
+			Class:__Get("Lib","Log"):__Write("MySQL","Querystring ("..uniqueKey.."): ".._Get["Query"])
+			Class:__Get("Lib","Log"):__Write("MySQL","Querydatas ("..uniqueKey.."): "..tostring(Class:__Get("Lib","StringUtility"):__Concat(_Get["Args"],",")))
 			return _Get["Callback"][1], _Get["Callback"][2], _Get["Callback"][3]
 		end
 	end
@@ -117,10 +128,13 @@ function Mysql:__Set ( connection, table, field, value, condition, ... )
 		end
 		_Set["Exec"] = Class:__Get("Lib","Mysql"):__getConnection(connection):exec(_Set["Query"],table,field,value,unpack(_Set["Args"]))
 		if ( _Set["Exec"] ) then
-			--Server:__Output()
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (SET) on "..connection..": Sucessfull!")
 			return true
 		else
-			--Server:__Output()
+			local uniqueKey = Class:__Get("Lib","EncodingUtility"):__GenerateSalt ( 12 )
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (SET) on "..connection.." in table "..table.." ("..uniqueKey.."): Failed!")
+			Class:__Get("Lib","Log"):__Write("MySQL","Querystring ("..uniqueKey.."): ".._Set["Query"])
+			Class:__Get("Lib","Log"):__Write("MySQL","Querydatas ("..uniqueKey.."): "..tostring(Class:__Get("Lib","StringUtility"):__Concat(_Set["Args"],",")))
 			return false
 		end
 	end
@@ -140,10 +154,13 @@ function Mysql:__Insert ( connection, table, ... )
 		end
 		_Insert["Exec"] = Class:__Get("Lib","Mysql"):__getConnection(connection):exec(_Insert["Query"],table,unpack(_Insert["Args"]))
 		if ( _Insert["Exec"] ) then
-			--Server:__Output()
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (INSERT) on "..connection..": Sucessfull!")
 			return true
 		else
-			--Server:__Output()
+			local uniqueKey = Class:__Get("Lib","EncodingUtility"):__GenerateSalt ( 12 )
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (INSERT) on "..connection.." in table "..table.." ("..uniqueKey.."): Failed!")
+			Class:__Get("Lib","Log"):__Write("MySQL","Querystring ("..uniqueKey.."): ".._Insert["Query"])
+			Class:__Get("Lib","Log"):__Write("MySQL","Querydatas ("..uniqueKey.."): "..tostring(Class:__Get("Lib","StringUtility"):__Concat(_Insert["Args"],",")))
 			return false
 		end
 	end
@@ -161,10 +178,13 @@ function Mysql:__Delete ( connection, table, condition, ... )
 		end
 		_Delete["Exec"] = Class:__Get("Lib","Mysql"):__getConnection(connection):exec(_Delete["Query"],table,unpack(_Delete["Args"]))
 		if ( _Delete["Exec"] ) then
-			--Server:__Output()
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (DELETE) on "..connection..": Sucessfull!")
 			return true
 		else
-			--Server:__Output()
+			local uniqueKey = Class:__Get("Lib","EncodingUtility"):__GenerateSalt ( 12 )
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (DELETE) on "..connection.." in table "..table.." ("..uniqueKey.."): Failed!")
+			Class:__Get("Lib","Log"):__Write("MySQL","Querystring ("..uniqueKey.."): ".._Delete["Query"])
+			Class:__Get("Lib","Log"):__Write("MySQL","Querydatas ("..uniqueKey.."): "..tostring(Class:__Get("Lib","StringUtility"):__Concat(_Delete["Args"],",")))
 			return false
 		end
 	end	
@@ -180,10 +200,13 @@ function Mysql:__createTable ( connection, table, ... )
 		_createTable["Query"] = string.format(_createTable["Query"].." ( %s )",_createTable["Parameters"])
 		_createTable["Exec"] = Class:__Get("Lib","Mysql"):__getConnection(connection):exec(_createTable["Query"])
 		if ( _createTable["Exec"] ) then
-			--Server:__Output()
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (CREATE_TABLE) on "..connection..": Sucessfull!")
 			return true
 		else
-			--Server:__Output()
+			local uniqueKey = Class:__Get("Lib","EncodingUtility"):__GenerateSalt ( 12 )
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (CREATE_TABLE) on "..connection.." in table "..table.." ("..uniqueKey.."): Failed!")
+			Class:__Get("Lib","Log"):__Write("MySQL","Querystring ("..uniqueKey.."): ".._createTable["Query"])
+			Class:__Get("Lib","Log"):__Write("MySQL","Querydatas ("..uniqueKey.."): "..tostring(Class:__Get("Lib","StringUtility"):__Concat(_createTable["Args"],",")))
 			return false
 		end
 	end
@@ -196,10 +219,13 @@ function Mysql:__deleteTable ( connection, table )
 		_deleteTable["Query"] = "DROP TABLE '"..table.."'"
 		_deleteTable["Exec"] = Class:__Get("Lib","Mysql"):__getConnection(connection):exec(_deleteTable["Query"])
 		if ( _deleteTable["Exec"] ) then
-			--Server:__Output()
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (DELETE_TABLE) on "..connection..": Sucessfull!")
 			return true
 		else
-			--Server:__Output()
+			local uniqueKey = Class:__Get("Lib","EncodingUtility"):__GenerateSalt ( 12 )
+			Class:__Get("Lib","Log"):__Write("MySQL","MySQL Query (DELETE_TABLE) on "..connection.." in table "..table.." ("..uniqueKey.."): Failed!")
+			Class:__Get("Lib","Log"):__Write("MySQL","Querystring ("..uniqueKey.."): ".._deleteTable["Query"])
+			Class:__Get("Lib","Log"):__Write("MySQL","Querydatas ("..uniqueKey.."): "..tostring(Class:__Get("Lib","StringUtility"):__Concat(_deleteTable["Args"],",")))
 			return false
 		end
 	end
