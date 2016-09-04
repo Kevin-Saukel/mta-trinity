@@ -21,7 +21,11 @@ function Mysql:__addConnection ( field, type, host, username, password, options 
 		self.data[field]["Options"] = options
 		self.connection[field] = Connection( self.data[field]["Type"], self.data[field]["Host"], self.data[field]["Username"], self.data[field]["Password"], self.data[field]["Options"])
 		if ( self.connection[field] ) then
+			Class:__Get("Lib","Log"):__Write("MySQL","Connected to "..self.data[field]["Type"].." Server on "..self.data[field]["Host"].." with user "..self.data[field]["Username"])
 			return true
+		else
+			Class:__Get("Lib","Log"):__Write("MySQL","Unable to connect to "..self.data[field]["Type"].." Server on "..self.data[field]["Host"].." with user "..self.data[field]["Username"])
+			return false
 		end
 	end
 	return false

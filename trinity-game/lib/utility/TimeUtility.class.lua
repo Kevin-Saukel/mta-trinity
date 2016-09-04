@@ -22,7 +22,7 @@ function TimeUtility:__getTimestamp ()
 	if ( _getTimestamp["Realtime_Minute"] < 10 ) then
 		_getTimestamp["Realtime_Minute"] = "0".._getTimestamp["Realtime_Minute"]
 	end
-	return _getTimestamp["Realtime"].monthday..".".._getTimestamp["Realtime"].month..".".._getTimestamp["Realtime_Year"].." ".._getTimestamp["Realtime"].hour..":".._getTimestamp["Realtime_Minute"]
+	return _getTimestamp["Realtime"].monthday.."."..(_getTimestamp["Realtime"].month+1)..".".._getTimestamp["Realtime_Year"].." ".._getTimestamp["Realtime"].hour..":".._getTimestamp["Realtime_Minute"]
 end
 
 function TimeUtility:__getDaytime()

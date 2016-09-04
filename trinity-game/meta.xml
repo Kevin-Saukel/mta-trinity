@@ -75,6 +75,7 @@
 		<!-------- Buchstabe - M -------->
 		<script src="lib/manager/Dimension.manager.lua" type="server" />
 		<script src="lib/manager/Event.manager.lua" type="shared" />
+		<script src="lib/manager/Log.manager.lua" type="shared" />
 		<script src="lib/manager/Method.manager.lua" type="shared" />
 		<script src="lib/manager/Mod.manager.lua" type="client" />
 		<script src="lib/manager/Resource.manager.lua" type="server" />
