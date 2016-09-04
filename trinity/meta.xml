@@ -1,0 +1,121 @@
+<meta>
+	<info author="Kevin Saukel" type="gamemode" description="© by Kevin Saukel" version="1.0.0-0" />
+	<!--*****************************-->
+	<!--***** © by Kevin Saukel *****-->
+	<!--**** All rights reserved ****-->
+	<!--******** 29.07.2016 *********-->
+	<!--*****************************-->
+	
+	<!-------- Extra Declaration -------->
+	<oop>true</oop>
+	<download_priority_group>1</download_priority_group>
+	
+	<!-------- Shader -------->
+	<file src="client/shader/Blur.fx" />
+	<file src="client/shader/Replace.fx" />
+	
+	<!-------- Images -------->
+	<file src="client/images/DX/arrow.png" />
+	<file src="client/images/DX/box.png" />
+	
+	<file src="client/images/Registerlogin/background.png" />
+	<file src="client/images/Registerlogin/user.png" />
+	
+	
+	<!-------- Fonts -------->
+
+	
+	<!-------- ACL-Requests -------->
+	<aclrequest>
+		<right name="function.setServerPassword" access="true" />
+		<right name="function.startResource" access="true" />
+	</aclrequest>	
+	
+	
+	<!-------- System - Class Loader - Need to be first -------->
+	<script src="sys/Class.lua" type="shared" />
+	
+	<!-------- Another Requirements -------->
+	<script src="lib/internal/lua/Table.class.lua" type="shared" />
+	
+	<!-------- Lib -------->
+	<script src="lib/Lib.lua" type="shared" />
+	
+		<!-------- Buchstabe - C -------->
+		<script src="lib/config/Lib.config.lua" type="shared" />
+		
+		<!-------- Buchstabe - D -------->
+		<script src="lib/data/Data.class.lua" type="server" />
+		
+		<script src="lib/dev/Performance.server.class.lua" type="server" />
+		<script src="lib/dev/Client.lua" type="client" />
+		<script src="lib/dev/Server.lua" type="server" />
+		
+		<script src="lib/dx/DX.class.lua" type="client" />
+		<script src="lib/dx/Anim2D.class.lua" type="client" />
+		<script src="lib/dx/Anim3D.class.lua" type="client" />
+		<script src="lib/dx/Button.class.lua" type="client" />
+		<script src="lib/dx/Checkbox.class.lua" type="client" />
+		<script src="lib/dx/Diashow.class.lua" type="client" />
+		<script src="lib/dx/Editbox.class.lua" type="client" />
+		<script src="lib/dx/Image.class.lua" type="client" />
+		<script src="lib/dx/List.class.lua" type="client" />
+		<script src="lib/dx/SlowText.class.lua" type="client" />
+		<script src="lib/dx/Tabpanel.class.lua" type="client" />
+		<script src="lib/dx/Text.class.lua" type="client" />
+		<script src="lib/dx/Window.class.lua" type="client" />
+		
+		<!-------- Buchstabe - E -------->
+		<script src="lib/environment/Register.method.lua" type="server" />
+		
+		<!-------- Buchstabe - I -------->
+		<script src="lib/internal/element/Player.class.lua" type="shared" />
+		<script src="lib/internal/element/Racepickup.class.lua" type="shared" />
+		
+		<!-------- Buchstabe - M -------->
+		<script src="lib/manager/Dimension.manager.lua" type="server" />
+		<script src="lib/manager/Event.manager.lua" type="shared" />
+		<script src="lib/manager/Method.manager.lua" type="shared" />
+		<script src="lib/manager/Mod.manager.lua" type="client" />
+		<script src="lib/manager/Resource.manager.lua" type="server" />
+		<script src="lib/manager/Shader.manager.lua" type="client" />
+		
+		<script src="lib/mysql/Mysql.class.lua" type="server" />
+		
+		<!-------- Buchstabe - R -------->
+		<script src="lib/register_login/Guest.class.lua" type="server" />
+		<script src="lib/register_login/Login.class.lua" type="server" />
+		<script src="lib/register_login/Register.class.lua" type="server" />
+		
+		<!-------- Buchstabe - U -------->
+		<script src="lib/utility/EncodingUtility.class.lua" type="shared" />
+		<script src="lib/utility/FileUtility.class.lua" type="shared" />
+		<script src="lib/utility/StringUtility.class.lua" type="shared" />
+		<script src="lib/utility/TimeUtility.class.lua" type="shared" />
+		<script src="lib/utility/XMLUtility.class.lua" type="shared" />
+		
+	<!-------- Configs -------->
+	<script src="conf/client/Shader.config.lua" type="client" />
+	
+	<script src="conf/data/Data.config.lua" type="server" />
+	
+	<script src="conf/sys/Mysql.config.lua" type="server" />
+	<script src="conf/sys/Resource.config.lua" type="server" />
+	<script src="conf/sys/Server.config.lua" type="server" />
+	<script src="conf/sys/Startup.client.config.lua" type="shared" />
+	<script src="conf/sys/Startup.server.config.lua" type="server" />
+	
+	<!-------- Gamemodes -------->
+	
+		<!-------- Multigamemode -------->
+		
+			<!------- Buchstabe - R ------->
+			<script src="gamemodes/Multigamemode/register_login/Registerlogin.client.class.lua" type="client" />
+			<script src="gamemodes/Multigamemode/register_login/Registerlogin.server.class.lua" type="server" />
+	
+	<!-------- System - Startup - Need to be at the end	-------->
+	<script src="sys/Startup.client.lua" type="shared" />
+	<script src="sys/Startup.server.lua" type="server" />
+	
+	
+</meta>
