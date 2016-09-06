@@ -19,8 +19,9 @@ local function Startup ()
 				Class:__Get("Lib","Shader"):__addShader(v[1],Class:__Get("Lib","Shader"):__getMethod(v[2]))
 			end
 		end
-		--**--
-		Class:__Get("Multigamemode","Registerlogin"):__New({ [1]={["Username"]="Elendio", ["Password"]="thehopelesshope", ["Permission"]="r"} },1)
+		--********************************************************************************************************************************************--
+		local profiles, last_profile = Class:__Get("Multigamemode","Registerlogin"):__readProfiles()
+		Class:__Get("Multigamemode","Registerlogin"):__New(profiles, last_profile)
 	end
 end
 Startup()

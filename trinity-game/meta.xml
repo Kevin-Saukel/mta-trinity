@@ -55,6 +55,7 @@
 		<script src="lib/dx/Anim2D.class.lua" type="client" />
 		<script src="lib/dx/Anim3D.class.lua" type="client" />
 		<script src="lib/dx/Button.class.lua" type="client" />
+		<script src="lib/dx/Browser.class.lua" type="client" />
 		<script src="lib/dx/Checkbox.class.lua" type="client" />
 		<script src="lib/dx/Diashow.class.lua" type="client" />
 		<script src="lib/dx/Editbox.class.lua" type="client" />
