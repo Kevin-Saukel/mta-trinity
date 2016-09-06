@@ -1,4 +1,7 @@
 body {
+	background-image: Url("../images/login_background.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
 	margin: auto;
 	box-sizing: border-box;
 }
@@ -10,9 +13,9 @@ body {
 	font-size: 350%;
 }
 
-@-webkit-keyframes fadeIn { from { margin-top:-50px; opacity: 0; } to { margin-top:0px; opacity: 1;} }
-@-moz-keyframes fadeIn { from { margin-top:-50px; opacity: 0;} to { margin-top:0px; opacity: 1;} }
-@keyframes fadeIn { from { margin-top:-50px; opacity: 0;} to { margin-top:0px; opacity: 1;} }
+@-webkit-keyframes fadeIn { from { margin-top:-50px; opacity: 0; } to { margin-top:100px; opacity: 1;} }
+@-moz-keyframes fadeIn { from { margin-top:-50px; opacity: 0;} to { margin-top:100px; opacity: 1;} }
+@keyframes fadeIn { from { margin-top:-50px; opacity: 0;} to { margin-top:100px; opacity: 1;} }
  
 .fade-in {
 	opacity: 0;
