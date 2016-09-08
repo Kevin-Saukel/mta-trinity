@@ -27,6 +27,7 @@ function Registerlogin:__New ( profiles, last_profile )
 	self.data["Profiles"] = profiles
 	self.data["Profiles"][#self.data["Profiles"]+1] = { ["Username"]="", ["Password"]="", ["Permission"]="rw" }
 	self.data["Current_Profile"] = last_profile
+	self.data["CEF_Activ"] = false
 	
 	self.methods = {}
 	self.methods["onRender"] = function() self:__onRender() end
@@ -66,7 +67,7 @@ end
 function Registerlogin:__onRender ()
 	if ( self.data["Activ"] ) then
 		if ( self.dx["Background"] ) then 
-			--dxDrawImage(0,0,gx,gy,self.dx["Background"])
+			dxDrawImage(0,0,gx,gy,self.dx["Background"])
 			dxDrawText("Username:", gx*(657/gpx), gy*(388/gpy), gx*(1022/gpx), gy*(409/gpy), tocolor(255, 255, 255, 255), gx*(1.20/gpx), "default-bold", "center", "center", true, false, true, false, false)
 			dxDrawText("Password:", gx*(657/gpx), gy*(484/gpy), gx*(1022/gpx), gy*(505/gpy), tocolor(255, 255, 255, 255), gx*(1.20/gpx), "default-bold", "center", "center", true, false, true, false, false)
 			
@@ -128,7 +129,16 @@ function Registerlogin:__onSubmit ( element )
 			--Message to Player
 		end
 	elseif ( element == self.dx["CEFButton"]:__getElement() ) then
-		Class:__Get("Lib","DX"):__Call("Browser"):__New(gx/2-gx/4, gy/2-gy/4, gx/2, gy/2, true)
+		if ( not self.data["CEF_Activ"] ) then
+			self.data["CEF_Activ"] = true
+			removeEventHandler("onClientRender",root,self.methods["onRender"])
+			for k, v in pairs(self.dx) do 
+				if ( k ~= "Background" ) then
+					v:__setVisible(false)
+				end
+			end
+			Class:__Get("Lib","DX"):__Call("Browser"):__New(0, 0, gx, gy, "www.ssr-frankfurt.de",true)
+		end
 	end
 end
 

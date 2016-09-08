@@ -64,6 +64,17 @@ function table.switchNew ( table )
 	return newTable
 end
 
+function table.find ( table, value )
+	local val = false
+	for k, v in pairs(table) do 
+		if ( v == value ) then
+			val = true
+			break
+		end
+	end
+	return val
+end
+
 --***********************************************--
 --***** http://lua-users.org/wiki/CopyTable *****--
 --**** All rights reserved **********************--
