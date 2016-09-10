@@ -59,6 +59,8 @@ function Registerlogin:__New ( profiles, last_profile )
 	self.dx["CEFButton"]:__setColor(0,0,255,150,0,0,255,250)
 	self.dx["CEFButton"]:__setCallfunc(self.methods["onSubmit"])
 	
+	self.dx["CEFBrowser"] = nil
+	
 	addEventHandler("onClientRender",root,self.methods["onRender"])
 	addEventHandler("onClientClick",root,self.methods["onClick"])
 end
@@ -137,7 +139,8 @@ function Registerlogin:__onSubmit ( element )
 					v:__setVisible(false)
 				end
 			end
-			Class:__Get("Lib","DX"):__Call("Browser"):__New(0, 0, gx, gy, "www.ssr-frankfurt.de",true)
+			self.dx["CEFBrowser"] Class:__Get("Lib","DX"):__Call("Browser"):__New(0, 0, gx, gy, "www.ssr-frankfurt.de",true)
+			self.dx["CEFBrowser"]:__setPermission("r")
 		end
 	end
 end

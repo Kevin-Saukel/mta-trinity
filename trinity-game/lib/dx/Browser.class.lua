@@ -13,10 +13,11 @@ function Browser:__New( x, y, w, h, address, postGUI, gpx, gpy )
 	self.data["Element"] = Element("Dump")
 	self.data["Activ"] = true
 	self.data["Visible"] = true
-	self.data["Focus"] = false
 	--*******************************************************************************************************************************--
 	self.data["X"], self.data["Y"], self.data["W"], self.data["H"] = Class:__Get("Lib","DX"):__Transform(x,y,w,h,gpx,gpy)
 	self.data["PostGUI"] = postGUI
+	self.data["Focus"] = false
+	self.data["Permission"] = "rw"
 	--*******************************************************************************************************************************--
 	self.data["Current_Address"] = address
 	--*******************************************************************************************************************************--
@@ -54,6 +55,13 @@ function Browser:__setFocus ( bool )
 	guiSetInputEnabled(self.data["Focus"])
 end 
 
+function Browser:__setPermission ( permission ) 
+	if ( permission ) then
+		self.data["Permission"] = permission
+		self.dx["Address_Submit"]:__setPermission(self.data["Permission"])
+	end
+end
+
 function Browser:__setPosition ( x, y, w, h, gpx, gpy ) 
 	if ( x and y and w and h ) then
 		self.data["X"], self.data["Y"], self.data["W"], self.data["H"] = Class:__Get("Lib","DX"):__Transform(x,y,w,h,gpx,gpy)
@@ -74,6 +82,10 @@ end
 
 function Browser:__getFocus ()
 	return self.data["Focus"]
+end
+
+function Browser:__getPermission()
+	return self.data["Permission"]
 end
 
 function Browser:__getPosition ()
@@ -140,6 +152,10 @@ function Browser:__onRender()
 			dxDrawRectangle(self.data["X"], self.data["Y"], self.data["W"], self.data["H"]-((9/10)*self.data["H"]), tocolor(0,0,0,175), self.data["PostGUI"]) 
 		end
 	end
+end
+
+function Browser:__Destroy()
+
 end
 
 Class:__Get("Lib","DX"):__Add ( "Browser", Browser )
